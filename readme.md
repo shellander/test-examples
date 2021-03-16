@@ -9,11 +9,11 @@ Steps:
 3. Run the notebook to the cell where the model is saved.
 4. In the terminal (from your project folder, 'models' should be a subdirectory)
 
-    4.1 stackn setup (URL is https://studio.safespring-prod.stackn.dev, name can be anything)
-    4.2 stackn get projects
-    4.3 stackn set project -p <project name>
-    4.4 stackn create object -n mnist -r minor
-    4.5 stackn get models (check that the model is listed)
+4.1 stackn setup (URL is https://studio.safespring-prod.stackn.dev, name can be anything)
+4.2 stackn get projects
+4.3 stackn set project -p <project name>
+4.4 stackn create object -n mnist -r minor
+4.5 stackn get models (check that the model is listed)
 
 5. Deploy the model as a Tensorflow model (Check logs to verify that it has deployed, click folder icon)
 6. Get the endpoint, paste it into the notebook and call the endpoint to verify that it works.
