@@ -47,6 +47,13 @@ Steps:
 7. In VSCode, go to your folder under "/home/stackn" and update the app with your model endpoint.
 8. Test the app!
 
+# Transformers example project
+
+1. Clone the repo onto a volume: https://github.com/scaleoutsystems/transformers-example-project
+2. In the repository directory, run stackn create object -n afbert -r minor
+3. Deploy the model with "Python Model Deployment". It takes a long time for this model to initialize, so keep checking the logs until it is available. "Running" != "Ready"
+4. Copy the endpoint url, paste it in the "predict" notebook in the repository, and predict.
+
 # FEDn (Not Ready!)
 
 1. Create a FEDn project.
