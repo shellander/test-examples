@@ -39,7 +39,7 @@ Steps:
 # PyTorch
 
 1. Go to your Minio instance and create a bucket, say "pytorch". Upload the VGG_scripted.mar model archive.
-2. Deploy the model with the "PyTorch Serve" app, the endpoint should be "public" and the volume should be your minio volume. Path to model store is your bucket name.
+2. Deploy the model with the "PyTorch Serve" app, the endpoint should be "public" and the volume should be your minio volume. Path to model store is your bucket name. List of models can be left empty (then, by default, all models in the directory will be deployed).
 3. Create a volume for a Dash app.
 4. Launch a VSCode instance where you mount your newly created volume.
 5. Clone this repository: https://github.com/stefanhellander/dash-test.git to your volume.
