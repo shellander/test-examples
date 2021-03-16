@@ -21,7 +21,7 @@ Steps:
 
     1. Create a STACKn default project, or create a volume in your existing project.
     2. Clone the AML repository to your volume: https://github.com/scaleoutsystems/aml-example-project.git
-    3. Create a model object in STACKn (see point 4 above)
+    3. Create a model object in STACKn (see point 4 above, create the model from the AML project directory, so for example 'aml-vol/aml-example-project/ )
     4. Deploy the model with the "Python Model Deployment" app.
     5. Get the endpoint, check the logs, and go to the notebook "predict.ipynb" in the repository. Paste your URL, and make a prediction.
 
