@@ -43,7 +43,7 @@ Steps:
 3. Create a volume for a Dash app.
 4. Launch a VSCode instance where you mount your newly created volume.
 5. Clone this repository: https://github.com/stefanhellander/dash-test.git to your volume.
-6. Deploy the app with the app "Dash Deployment" (under "Serve")
+6. Deploy the app with the app "Dash Deployment" (under "Serve", path should be relative to your volume, so probably "dash-test")
 7. In VSCode, go to your folder under "/home/stackn" and update the app with your model endpoint.
 8. Test the app!
 
