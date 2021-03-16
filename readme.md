@@ -47,7 +47,7 @@ Steps:
 7. In VSCode, go to your folder under "/home/stackn" and update the app with your model endpoint.
 8. Test the app!
 
-# FEDn
+# FEDn (Not Ready!)
 
 1. Create a FEDn project.
 2. Clone the FEDn repository: https://github.com/scaleoutsystems/fedn
