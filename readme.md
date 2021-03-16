@@ -7,7 +7,7 @@ Steps:
     1. Create a "STACKn Default" project (after, refresh the page until all apps are available)
     2. Upload the notebook in your project folder in labs.
     3. Run the notebook to the cell where the model is saved.
-    4. In the terminal:
+    4. In the terminal (from your project folder, 'models' should be a subdirectory)
         4.1 stackn setup (URL is https://studio.safespring-prod.stackn.dev, name can be anything)
         4.2 stackn get projects
         4.3 stackn set project -p <project name>
