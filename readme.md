@@ -57,9 +57,10 @@ Steps:
 # FEDn (Not Ready!)
 
 1. Create a FEDn project.
-2. Clone the FEDn repository: https://github.com/scaleoutsystems/fedn
-3. Go to the "test/mnist-keras" directory.
-4. Create a "FEDn Client" object:
+2. Create two buckets in the project Minio: fedn-models, fedn-context
+3. Clone the FEDn repository: https://github.com/scaleoutsystems/fedn
+4. Go to the "test/mnist-keras" directory.
+5. Create a "FEDn Client" object:
 ```stackn create object -t fedn-client -n fedn-mnist -r minor```
 5. Check under "Models" in the UI that you have a "FEDn Client" object.
 6. Deploy a Reducer, wait until it's running. This will take a long time, since it's also building and pushing the client to your project registry.
