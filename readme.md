@@ -1,3 +1,5 @@
+General preparation: Download the Jupyter Notebooks from this repository, or be prepared to Git clone the repo or files as needed.
+
 # MNIST
 
 Purpose is to build and deploy a simple neural network.
@@ -5,22 +7,26 @@ Purpose is to build and deploy a simple neural network.
 Steps:
 
 1. Create a "STACKn Default" project (after, refresh the page until all apps are available)
-2. Upload the notebook in your project folder in labs.
-3. Run the notebook to the cell where the model is saved.
-4. In the terminal (from your project folder, 'models' should be a subdirectory)
+2. Start a new lab session (_Compute -> New -> Lab_) on the main Overview page. Name can be anything, select "project-vol" as Persistent Volume and leave the rest as defaults. 
+3. Upload the _mnist_example_tf_serving.ipynb notebook_ to your project folder in labs (project-vol).
+4. Run the notebook to the cell where the model is saved (`tf.saved_model.save...`).
+5. In the Jupyter terminal (from your project folder, 'models' should be a subdirectory)
 
-    4.1 stackn setup (URL is https://studio.safespring-prod.stackn.dev, name can be anything)
+    5.1 `stackn setup` (Name can be anything, Studio host is https://studio.safespring-prod.stackn.dev)
 
-    4.2 stackn get projects
+    5.2 `stackn get projects` 
 
-    4.3 stackn set project -p <project name>
+    5.3 `stackn set project -p <project name>` (set your current project)
 
-    4.4 stackn create object -n mnist -r minor
+    5.4 `stackn create object -n mnist -r minor`
 
-    4.5 stackn get models (check that the model is listed)
+    5.5 `stackn get models` (check that the model is listed)
 
-5. Deploy the model as a Tensorflow model (Check logs to verify that it has deployed, click folder icon)
-6. Get the endpoint, paste it into the notebook and call the endpoint to verify that it works.
+6. Go back to the STACKn interface, go to Serve and deploy the model as a Tensorflow model:
+    6.1 Click _Create_ in _Tensorflow Serving_
+    6.2 Choose a name, set _Model_ to the model you just created and leave the rest as defaults
+    6.3 A Tensorflow Serving service will pop up in the top of the window. Check logs to verify that it has deployed, (look for 'Entering the event loop ...') by clicking the folder icon.
+7. Get the endpoint (right click the _Open_ link), paste it into the Jupyter notebook and call the endpoint to verify that it works.
 
 
 # AML
