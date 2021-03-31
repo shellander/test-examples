@@ -72,11 +72,62 @@ Steps:
 
 # FEDn (Not Ready!)
 
-1. Create a FEDn project.
-2. Create two buckets in the project Minio: fedn-models, fedn-context
-3. Clone the FEDn repository: https://github.com/scaleoutsystems/fedn
-4. Go to the "test/mnist-keras" directory.
-5. Create a "FEDn Client" object:
+>Preparions: It helps to have a local copy of the FEDn repositiry available. Clone or download it from https://github.com/scaleoutsystems/fedn. You will also use deploy-fedn-mnist.ipynb and mnist-predict.ipynb from this repository (https://github.com/scaleoutsystems/test-examples)
+
+### Setting a reducer and combiner in STACKn
+1. Create a new project using the FEDn Project template.
+
+2. Wait for all resources to start. Reload the page until you see a running Jupyter Notebook under "Compute", a "FEDn Combiner" under FEDn and a "FEDn Reducer" under FEDn.
+
+3. To train a model in FEDn you provide the client code as a tarball. For convenience, we ship a pre-made package (the 'client' folder in the FEDn repository) that defines what happens on the client side during training and validation, as well as some settings.
+* Open the link to the FEDn Reducer in a new tab
+* Click the '/context' link and upload mnist.tar.gz from https://github.com/scaleoutsystems/fedn/tree/master/test/mnist-keras/package
+
+4. The baseline model (a CNN) is specified in the file 'client/init_model.py'. This script creates an untrained neural network and serializes that to a file, which is uploaded as the seed model for federated training. For convenience we ship a pregenerated seed model in the 'seed/' directory. If you wish to alter the base model, edit 'init_model.py' and regenerate the seed file
+* Click 'History' in the left menu
+* Click 'Choose file:' and upload seed.npz from https://github.com/scaleoutsystems/fedn/tree/master/test/mnist-keras/seed
+
+5. Go to 'Network' in the left menu and check that there is a combiner listed under 'Combiners', with 0 'Active clients'
+
+### Setting up a local client
+We will now set up a separated client that will attach to the combiner. This should be done on a Linux/Unix machine with Docker.
+
+> The easiest way to do the following step is to clone the FEDn repo and then run a pre-built Docker image, replacing the path and HOST in the following with your path to the cloned repo and the Reducer URL `docker run -it -v /home/daniel/fedn/test/mnist-keras/client/data:/app/data -e HOST=reducer-mnist-wsf-9aa4.studio.my-env.stackn.dev scaleoutsystems/fedn-mnist-client:latest`. Alternatively, follow the steps below.
+
+1. Clone the FEDn repo
+```bash
+git clone --depth 1 --single-branch --branch=develop https://github.com/scaleoutsystems/fedn.git
+```
+2. Edit the fedn-network.yaml in fedn/test/mnist-keras/. Change the discover_host to the URL of the FEDn Reducer (e.g. copy it from the browser URL bar).
+```bash
+cd fedn/test/mnist-keras
+nano fedn-network.yaml
+```
+3. Rebuild the client
+```bash
+docker build -t client-local:latest .
+```
+4. Run the Docker image
+
+### Run federated training 
+Now it's time to run a few federated training rounds. Go to the Reducer web UI. 
+1. Go to 'Control' in the left menu.
+2. Run 3 rounds by expanding the list after 'Run rounds:', selecting 3 and then 'Submit'
+3. Go to 'History' in the left menu and refresh until a new model name appears.
+4. Go to 'Dashboard' in the left menu to see stats about the training rounds as they complete. Refresh the page to update with results from more training rounds.
+
+This completes the setup and training of a federated model!
+
+### Publish and serve the model as an API
+To make the model useful we will now save it as a model and deploy it in a serving container, as a publicly available web service.
+
+1. Go to the STACKn Overview page.
+2. Open the Jupyter service (open 'Lab' in a new tab).
+3. Open a Jupyter Terminal
+
+
+8. Go to the "test/mnist-keras" directory.
+9. Create a "FEDn Client" object:
 ```stackn create object -t fedn-client -n fedn-mnist -r minor```
 5. Check under "Models" in the UI that you have a "FEDn Client" object.
 6. Deploy a Reducer, wait until it's running. This will take a long time, since it's also building and pushing the client to your project registry.
