@@ -12,7 +12,7 @@ Steps:
 4. Run the notebook to the cell where the model is saved (`tf.saved_model.save...`).
 5. In the Jupyter terminal (from your project folder, 'models' should be a subdirectory)
 
-    5.1 `stackn setup` (Name can be anything, Studio host is https://studio.safespring-prod.stackn.dev)
+    5.1 `stackn setup` (Name can be anything, Studio host is e.g. https://studio.myprodenvironement.stackn.dev, copy the URL of the running instance, no trailing slash)
 
     5.2 `stackn get projects` 
 
