@@ -44,6 +44,7 @@ Steps:
 
 # PyTorch
 
+1. Run ```git-lfs pull``` to download the PyTorch model archive (VGG_scripted.mar). If you need to install git-lfs, see for instance: https://git-lfs.github.com/.
 1. Go to your Minio instance and create a bucket, say "pytorch". Upload the VGG_scripted.mar model archive.
 2. Deploy the model with the "PyTorch Serve" app, the endpoint should be "public" and the volume should be your minio volume. Path to model store is your bucket name. List of models can be left empty (then, by default, all models in the directory will be deployed).
 3. Create a volume for a Dash app.
