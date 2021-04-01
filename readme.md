@@ -33,7 +33,7 @@ Steps:
 
 1. Create a STACKn default project, or create a volume in your existing project.
 2. Clone the AML repository to your volume: https://github.com/scaleoutsystems/aml-example-project.git
-3. Create a model object in STACKn (see point 4.1-4.3 above, create the model from the AML project directory, so for example 'aml-vol/aml-example-project/ )
+3. Create a model object in STACKn (see point 5.1-5.5 above, create the model from the AML project directory, so for example 'project-vol/aml-example-project/ )
 
     3.1 Create a tar archive of the relevant folders: tar czvf ../aml-model.tar.gz src models requirements.txt setup.py helpers.py (we do this to avoid including the big "dataset" directory)
 
