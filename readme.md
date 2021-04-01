@@ -135,8 +135,8 @@ cd project-volume
 git clone --depth 1 https://github.com/scaleoutsystems/fedn.git
 ```
 5. Save the model as a Tensorflow model. 
-- Upload __deploy-fedn-mnist.ipynb__ from this repo to fedn/test/mnist-keras/client
-- Open it and replace the model name with the most recent model name from the 'minio-vol/fedn-models'
+- Upload __deploy-fedn-mnist.ipynb__ from this repo to __fedn/test/mnist-keras/client__.
+- Open it and replace the model name with the most recent model name from 'minio-vol/fedn-models'
 - Run all cells to save the model
 6. Configure the STACKn CLI to work on this project. In the terminal, go to the folder with the model and then run 'stackn setup'
 ```bash
