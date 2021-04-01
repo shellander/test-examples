@@ -64,11 +64,11 @@ Steps:
 
 1. Create a STACKn default project.
 2. Create a Jupyter Lab instance.
-3. In your project volume, upload the notebook "mnist_train", and run all cells.
+3. In your project volume, upload the notebook "mnist_train.ipynb", and run all cells.
 4. In MLflow, click the run, scroll down to "artifacts", select the model, and click "Create model".
 5. Verify that the model exists in STACKn under "Objects"->MLflow.
 6. Go to Serve, deploy the model with the "MLflow Serve" app.
-7. Go to your notebook, upload mnist_predict, change the URL to your endpoint and verify that it works.
+7. Go to your notebook, upload mnist_predict.ipynb, change the URL to your endpoint and verify that it works.
 
 # FEDn MNIST
 
