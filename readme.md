@@ -72,7 +72,7 @@ Steps:
 
 # FEDn MNIST
 
->Preparions: It helps to have a local copy of the FEDn repositiry available. Clone or download it from https://github.com/scaleoutsystems/fedn. You will also use deploy-fedn-mnist.ipynb and mnist-predict.ipynb from this repository (https://github.com/scaleoutsystems/test-examples)
+>Preparations: It helps to have a local copy of the FEDn repository available. Clone or download it from https://github.com/scaleoutsystems/fedn. You will also use deploy-fedn-mnist.ipynb and mnist-predict.ipynb from this repository (https://github.com/scaleoutsystems/test-examples)
 
 ### Setting a reducer and combiner in STACKn
 1. Create a new project using the FEDn Project template.
@@ -132,7 +132,7 @@ To make the model useful it will be saved as a Tensorflow model and deployed in 
 3. Open a Jupyter Terminal and clone the FEDn repo
 ```bash
 cd project-volume
-git clone git clone --depth 1 https://github.com/scaleoutsystems/fedn.git
+git clone --depth 1 https://github.com/scaleoutsystems/fedn.git
 ```
 5. Save the model as a Tensorflow model. 
 - Upload __deploy-fedn-mnist.ipynb__ from this repo to the project-volume (for persistent storage)
