@@ -111,7 +111,7 @@ docker build -t client-local:latest .
 
 4. Run the Docker image
 ```bash
-docker run -it -v /path/to/fedn/test/mnist-keras/client/data:/app/data client-local:latest fedn run client -in fedn-network.yaml
+docker run -it -v /absolute/path/to/fedn/test/mnist-keras/data:/app/data client-local:latest fedn run client -in fedn-network.yaml
 ```
 
 ### Run federated training 
