@@ -98,28 +98,21 @@ Steps:
 ### Setting up a local client
 We will now set up a separated client that will attach to the combiner. This should be done on a Linux/Unix machine with Docker.
 
-> The easiest way to do the following step is to clone the FEDn repo and then run a pre-built Docker image. Alternatively, follow the steps below.
-
-1. Run a pre-built Docker image, replace the path and HOST in the following with your path to the cloned repo and the Reducer URL 
-```bash
-docker run -it -v /home/myuser/fedn/test/mnist-keras/client/data:/app/data -e HOST=reducer-mnist-wsf-9aa4.studio.my-env.stackn.dev scaleoutsystems/fedn-mnist-client:latest
-```
-alternative version:
 1. Clone the FEDn repo
 ```bash
 git clone --depth 1 --single-branch --branch=develop https://github.com/scaleoutsystems/fedn.git
 ```
-2. Edit the fedn-network.yaml in fedn/test/mnist-keras/. Change the discover_host to the URL of the FEDn Reducer (e.g. copy it from the browser URL bar).
-```bash
-cd fedn/test/mnist-keras
-nano fedn-network.yaml
-```
+2. Edit the fedn-network.yaml in fedn/test/mnist-keras/. Change the __discover_host__ to the URL of the FEDn Reducer (e.g. copy it from the browser URL bar, omit the scheme and trailing slash, so for instance: ```reducer-fedn-mnist-hbr-0491.studio.safespring-prod.stackn.dev```). Change the __discover_port__ to __443__.
+
 3. Rebuild the client
 ```bash
 docker build -t client-local:latest .
 ```
+
 4. Run the Docker image
-...
+```bash
+docker run -it -v /path/to/fedn/test/mnist-keras/client/data:/app/data client-local:latest fedn run client -in fedn-network.yaml
+```
 
 ### Run federated training 
 Now it's time to run a few federated training rounds. Go to the Reducer web UI. 
@@ -152,7 +145,7 @@ stackn create object mnist-fedn -r minor
 - Go to STACKn, select Serve in the left menu.
 - Click 'Create' under 'Tensorflow Serving'
 - Name: can be anything
-- Enabled: True
+- Select your model.
 - Leave all other settings as their defaults
 - Click 'Create'
 8. Wait for the container to deploy. You can check the log (via the folder icon) for 'Entering the event loop'.
