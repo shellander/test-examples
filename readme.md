@@ -12,15 +12,9 @@ Steps:
 4. Run the notebook to the cell where the model is saved (`tf.saved_model.save...`).
 5. In the Jupyter terminal (from your project folder, 'models' should be a subdirectory)
 
-    5.1 `stackn setup` (Name can be anything, Studio host is e.g. https://studio.myprodenvironement.stackn.dev, copy the URL of the running instance, no trailing slash)
+    5.1 `stackn create object mnist -r minor`
 
-    5.2 `stackn get projects` 
-
-    5.3 `stackn set project -p <project name>` (set your current project)
-
-    5.4 `stackn create object -n mnist -r minor`
-
-    5.5 `stackn get models` (check that the model is listed)
+    5.2 `stackn get objects` (check that the model is listed)
 
 6. Go back to the STACKn interface, go to Serve and deploy the model as a Tensorflow model:
     6.1 Click _Create_ in _Tensorflow Serving_
@@ -32,34 +26,45 @@ Steps:
 # AML
 
 1. Create a STACKn default project, or create a volume in your existing project.
-2. Clone the AML repository to your volume: https://github.com/scaleoutsystems/aml-example-project.git
-3. Create a model object in STACKn (see point 5.1-5.5 above, create the model from the AML project directory, so for example 'project-vol/aml-example-project/ )
 
-    3.1 Create a tar archive of the relevant folders: tar czvf ../aml-model.tar.gz src models requirements.txt setup.py helpers.py (we do this to avoid including the big "dataset" directory)
+2. Create a new lab session, then launch a terminal.
 
-    3.2 stackn create object -f ../aml-model.tar.gz -n aml -r minor
+3. Clone the AML repository to your volume: 
+
+    3.1 cd your-project-volume
+    3.2 git clone https://github.com/scaleoutsystems/aml-example-project.git
+
+4. Create a model object in STACKn:
+
+    4.1 cd aml-example-project
+
+    4.2 Create a tar archive of the relevant folders: 
+    ```tar czvf ../aml-model.tar.gz src models requirements.txt setup.py helpers.py``` 
+    (we do this to avoid including the big "dataset" directory)
+
+    4.3 ```stackn create object aml -f ../aml-model.tar.gz -r minor```
 
 5. Deploy the model with the "Python Model Deployment" app.
-6. Get the endpoint, check the logs, and go to the notebook "predict.ipynb" in the repository. Paste your URL, and make a prediction.
+6. Get the endpoint, check the logs, and go to the notebook "notebooks/predict.ipynb" in the repository. Paste your URL, and make a prediction.
 
 # PyTorch
 
-1. Run ```git-lfs pull``` to download the PyTorch model archive (VGG_scripted.mar). If you need to install git-lfs, see for instance: https://git-lfs.github.com/.
-1. Go to your Minio instance and create a bucket, say "pytorch". Upload the VGG_scripted.mar model archive.
+1. Run ```git-lfs pull``` in the "test-examples" directory to download the PyTorch model archive (VGG_scripted.mar). If you need to install git-lfs, see for instance: https://git-lfs.github.com/.
+1. In your STACKn default project, go to your Minio instance and create a bucket, say "pytorch". Upload the VGG_scripted.mar model archive.
 2. Deploy the model with the "PyTorch Serve" app, the endpoint should be "public" and the volume should be your minio volume. Path to model store is your bucket name. List of models can be left empty (then, by default, all models in the directory will be deployed).
 3. Create a volume for a Dash app.
-4. Launch a VSCode instance where you mount your newly created volume.
+4. Go to "Misc" and launch a VSCode instance where you mount your newly created volume.
 5. Clone this repository: https://github.com/stefanhellander/dash-test.git to your volume.
-6. Deploy the app with the app "Dash Deployment" (under "Serve", path should be relative to your volume, so probably "dash-test")
-7. In VSCode, go to your folder under "/home/stackn" and update the app with your model endpoint.
-8. Test the app!
+6. Deploy the app with the app "Dash Deployment" (under "Serve", path should be relative to your volume, so probably "dash-test", let "Debug deployment" be "False")
+7. In VSCode, go to your folder under "/home/stackn" and update the app with your model endpoint. Note that the model name is "vgg11_scripted", so the URL should be for example: ```https://torch-serve-aml-test-haa-a438.studio.local.stackn.dev/predictions/vgg11_scripted```
+8. Test the app! You can use "ball.jpeg" in the "test-examples" repository.
 
 # Transformers example project
 
 1. Clone the repo onto a volume: https://github.com/scaleoutsystems/transformers-example-project
-2. In the repository directory, run stackn create object -n afbert -r minor
-3. Deploy the model with "Python Model Deployment". It takes a long time for this model to initialize, so keep checking the logs until it is available. "Running" != "Ready"
-4. Copy the endpoint url, paste it in the "predict" notebook in the repository, and predict.
+2. In the repository directory, run ```stackn create object afbert -r minor```.
+3. Deploy the model with "Python Model Deployment". It takes a long time for this model to initialize, so keep checking the logs until it is available. That the "State" is "Running" does not mean that the model has initialized, only that the container is running.
+4. Copy the endpoint url, paste it in the appropriate place in the "predict" notebook in the repository, and run the prediction.
 
 # MLflow
 
