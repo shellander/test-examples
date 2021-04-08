@@ -6,7 +6,7 @@ Purpose is to build and deploy a simple neural network.
 
 Steps:
 
-1. Create a "STACKn Default" project (after, refresh the page until all apps are available)
+1. Create a "STACKn Default" project (after, refresh the page until all apps are available, look for 'mlflow-server' under "Misc".)
 2. Start a new lab session (_Compute -> New -> Lab_) on the main Overview page. Name can be anything, select "project-vol" as Persistent Volume and leave the rest as defaults. 
 3. Upload the _mnist_example_tf_serving.ipynb notebook_ to your project folder in labs (project-vol).
 4. Run the notebook to the cell where the model is saved (`tf.saved_model.save...`).
