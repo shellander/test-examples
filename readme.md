@@ -131,24 +131,26 @@ To make the model useful it will be saved as a Tensorflow model and deployed in 
 3. Open a Jupyter Terminal and clone the FEDn repo
 ```bash
 cd project-volume
-git clone --depth 1 https://github.com/scaleoutsystems/fedn.git
+git clone --depth 1 --single-branch --branch=develop https://github.com/scaleoutsystems/fedn.git
 ```
 5. Save the model as a Tensorflow model. 
 - Upload __deploy-fedn-mnist.ipynb__ from this repo to __fedn/test/mnist-keras/client__.
 - Open it and replace the model name with the most recent model name from 'minio-vol/fedn-models'
-- Run all cells to save the model
-6. Create a new model with the 'create object' command. Model is the default object type, so no need to specify object type. -r defines the release type (patch, minor or major)
-```bash
-stackn create object mnist-fedn -r minor
-```
-7. The model was created as a Tensorflow model, so it can now be deployed using the Tensorflow serving app. 
+- Run all cells to save the model.
+- A new object is created in STACKn via the Python API: ```stackn.create_object('fedn-mnist', release_type="minor")```
+
+6. The model was created as a Tensorflow model, so it can now be deployed using the Tensorflow serving app. 
 - Go to STACKn, select Serve in the left menu.
 - Click 'Create' under 'Tensorflow Serving'
 - Name: can be anything
 - Select your model.
 - Leave all other settings as their defaults
 - Click 'Create'
-8. Wait for the container to deploy. You can check the log (via the folder icon) for 'Entering the event loop'.
-9. When deployed, copy the link to the endpoint by right-clicking 'Open' and copy link address. 
-10. Test the serving by uploading __mnist-predict.ipynb__ to the 'project-volume' (in Jupyter) and pasting the endpoint link in the request.post call.
-11. Run all cells to make a public (over the internet call) to the model and get a prediction from your federated model back!
+
+7. Wait for the container to deploy. You can check the log (via the folder icon) for 'Entering the event loop'.
+
+8. When deployed, copy the link to the endpoint by right-clicking 'Open' and copy link address. 
+
+9. Test the serving by uploading __mnist-predict.ipynb__ to the 'project-volume' (in Jupyter) and pasting the endpoint link in the request.post call.
+
+10. Run all cells to make a public (over the internet call) to the model and get a prediction from your federated model back!
