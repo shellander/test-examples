@@ -23,9 +23,13 @@ Steps:
     5.2 `stackn get objects` (check that the model is listed)
 
 6. Go back to the STACKn interface, go to Serve and deploy the model as a Tensorflow model:
+    
     6.1 Click _Create_ in _Tensorflow Serving_
+    
     6.2 Choose a name, set _Model_ to the model you just created and leave the rest as defaults
+    
     6.3 A Tensorflow Serving service will pop up in the top of the window. Check logs to verify that it has deployed, (look for 'Entering the event loop ...') by clicking the folder icon.
+
 7. Get the endpoint (right click the _Open_ link), paste it into the Jupyter notebook and call the endpoint to verify that it works.
 
 
