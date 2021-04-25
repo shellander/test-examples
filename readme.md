@@ -42,6 +42,7 @@ Steps:
 3. Clone the AML repository to your volume: 
 
     3.1 cd your-project-volume
+   
     3.2 git clone https://github.com/scaleoutsystems/aml-example-project.git
 
 4. Create a model object in STACKn:
