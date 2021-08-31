@@ -1,7 +1,6 @@
 _______________________
 ### Known Issues
-1. You need to choose a project name that is not more than 8 characters long. This is due to how URLs are created based on the project name.
-2. Occasionally you might see an error page reading something like "Suspicious activity...". This is due to a known bug, and not due to some suspicious activity. Click "Back" in your browser and reload the page, and it should work again.
+1. Occasionally you might see an error page reading something like "Suspicious activity...". This is due to a known bug, and not due to some suspicious activity. Click "Back" in your browser and reload the page, and it should work again.
 ___________________________
 
 General preparation: Download the Jupyter Notebooks from this repository, or be prepared to Git clone the repo or files as needed.
